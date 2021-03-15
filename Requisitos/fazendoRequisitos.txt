@@ -1,0 +1,12 @@
+[16:35, 14/03/2021] Daniel aluno DS Botelhos: tempo disponível (para a conclusão do software) -  
+
+registrar pedido - 
+
+acesso do funcionário(garçom) - 
+
+acesso do funcionário(gerente) -  
+
+acesso ao navegador web - 
+
+instalação do banco de dados em um servidor(PC) -
+[16:36, 14/03/2021] Daniel aluno DS Botelhos: na parte de instalaçao do banco de dados no pc, acho q pode ser algum requisito porém, será q tem msqli pra tablet ou celular, por que se a gente desenvolver esse app ele parece q roda apenas no pc
