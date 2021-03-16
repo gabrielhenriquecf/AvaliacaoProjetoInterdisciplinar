@@ -1,10 +1,10 @@
 RF1.1: Cadastrar Pedido;
 RF1.2: Consultar dos pedidos existente;
-1.3 Logar no sistema;
-1.4: Fechar Pedido(s);
-1.5: Receber pagamento do Cliente;
-1.6: Editar Pedido;
-1.7: Remover Pedido
+RF1.3 Logar no sistema;
+RF1.4: Fechar Pedido(s);
+RF1.5: Receber pagamento do Cliente;
+RF1.6: Editar Pedido;
+RF1.7: Remover Pedido
 
 NF2.1: A conta pode ser gerada em arquivo PDF;
 RF2.2: Exibir Erro de Login;
