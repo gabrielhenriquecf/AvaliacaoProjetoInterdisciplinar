@@ -9,30 +9,49 @@ session_start();
 if (isset($_POST['btn-entrar'])) {
   //array erros
   $erros = array();
-  $login = mysqli_escape_string($connect, $_POST['login']);
-  $senha = mysqli_escape_string($connect, $_POST['senha']);
+  $login = mysqli_escape_string($connectUser, $_POST['login']);
+  $senha = mysqli_escape_string($connectUser, $_POST['senha']);
 
   if (empty($login) or empty($senha)) {
     $erros[] = "<li> O campo login/senha precisa ser preenchido </li>";
   } else {
     $sql = "SELECT login FROM usuarios WHERE login = '$login'";
-    $resultado = mysqli_query($connect, $sql);
+    $resultado = mysqli_query($connectUser, $sql);
 
     if (mysqli_num_rows($resultado) > 0) {
       $senha = md5($senha);
       $sql = "SELECT * FROM usuarios WHERE login = '$login' AND senha = '$senha' ";
-      $resultado = mysqli_query($connect, $sql);
+      $resultado = mysqli_query($connectUser, $sql);
 
       if (mysqli_num_rows($resultado) == 1) {
         $dados = mysqli_fetch_array($resultado);
         $_SESSION['logado'] = true;
         $_SESSION['id_usuario'] = $dados['id'];
-        header('Location: pedidos.php');
+        header('Location: pedidosAtendente.php');
       } else {
         $erros[] = " <li> Usuário e senha não conferem </li> ";
       }
     } else {
-      $erros[] = "<li> Usuário não existe. </li>";
+
+      $sql = "SELECT login FROM caixa WHERE login = '$login'";
+      $resultado = mysqli_query($connectUser, $sql);
+
+      if (mysqli_num_rows($resultado) > 0) {
+        $senha = md5($senha);
+        $sql = "SELECT * FROM caixa WHERE login = '$login' AND senha = '$senha' ";
+        $resultado = mysqli_query($connectUser, $sql);
+
+        if (mysqli_num_rows($resultado) == 1) {
+          $dados = mysqli_fetch_array($resultado);
+          $_SESSION['logado'] = true;
+          $_SESSION['id_usuario'] = $dados['id'];
+          header('Location: pedidosCaixa.php');
+        } else {
+          $erros[] = " <li> Usuário e senha não conferem </li> ";
+        }
+      } else {
+        $erros[] = "<li> Usuário não existe. </li>";
+      }
     }
   }
 }

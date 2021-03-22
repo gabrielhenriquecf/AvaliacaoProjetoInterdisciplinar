@@ -1,41 +1,34 @@
 <?php
 include_once 'php_action/db_connect.php';
 include_once 'includes/header.php';
-/*
-// Sessão
-session_start();
-
-// Verificação
-if (!isset($_SESSION['logado'])) {
-    header('Location: index.php');
-}
 
 
 
-*/
 ?>
 
 <div class="row">
     <div class="col s12 m6 push-m3">
-        <h3 class="light"> Clientes </h3>
+        <h3 class="light"> Pedidos </h3>
 
         <table class="striped">
             <thead>
                 <tr>
-                    <th>Nome:
+                    <th>Cliente:
                     <th>
-                    <th>Sobrenome:
+                    <th>Mesa:
                     <th>
-                    <th>E-mail:
+                    <th>Descrição:
                     <th>
-                    <th>Idade:
+                    <th>Atendente:
+                    <th>
+                    <th>Estado:
                     <th>
                 </tr>
             </thead>
 
             <tbody>
                 <?php
-                $sql = "SELECT * FROM  clientes";
+                $sql = "SELECT * FROM  pedidos";
                 $resultado = mysqli_query($connect, $sql);
 
 
@@ -44,13 +37,15 @@ if (!isset($_SESSION['logado'])) {
                     while ($dados = mysqli_fetch_array($resultado)) :
                 ?>
                         <tr>
-                            <td><?php echo $dados['nome']; ?>
+                            <td><?php echo $dados['cliente']; ?>
                             <td>
-                            <td><?php echo $dados['sobrenome']; ?>
+                            <td><?php echo $dados['mesa']; ?>
                             <td>
-                            <td><?php echo $dados['email']; ?>
+                            <td><?php echo $dados['descricao_pedido']; ?>
                             <td>
-                            <td><?php echo $dados['idade']; ?>
+                            <td><?php echo $dados['atendente']; ?>
+                            <td>
+                            <td><?php echo $dados['estado']; ?>
                             <td>
                             <td><a href="editar.php?id=<?php echo $dados['id']; ?>" class="btn-floating orange"><i class="material-icons">edit</i></a>
                             <td>
@@ -62,7 +57,7 @@ if (!isset($_SESSION['logado'])) {
                                 <div id="modal<?php echo $dados['id']; ?>" class="modal">
                                     <div class="modal-content">
                                         <h4>Atenção!</h4>
-                                        <p>Favor, confirmar se deseja excluir esse cliente.</p>
+                                        <p>Favor, confirmar se deseja excluir esse pedido.</p>
                                     </div>
 
                                     <div class="modal-footer">
@@ -83,11 +78,13 @@ if (!isset($_SESSION['logado'])) {
                     <tr>
                         <td>-</td>
                         <td></td>
-                        <td>Nenhum cliente castrado</td>
+                        <td>Nenhum pedido existente</td>
                         <td></td>
                         <td>-</td>
+                        <td></td>
                         <td>-</td>
                         <td></td>
+                        <td>-</td>
                     </tr>
 
                 <?php
@@ -97,7 +94,8 @@ if (!isset($_SESSION['logado'])) {
             </tbody>
         </table>
         <br>
-        <a href="adicionar.php" class="btn">Adicionar cliente</a>
+        <a href="adicionar.php" class="btn">Adicionar pedido</a>
+        <a href="index.php" class="btn green">SAIR - Lista de Pedidos</a>
     </div>
 </div>
 
