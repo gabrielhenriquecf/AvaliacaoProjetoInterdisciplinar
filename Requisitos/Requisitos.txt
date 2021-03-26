@@ -1,25 +1,35 @@
 RF1.1: Cadastrar Pedido;
 RF1.2: Consultar dos pedidos existente;
 RF1.3 Logar no sistema;
-RF1.4: Fechar Pedido(s);
-RF1.5: Receber pagamento do Cliente;
-RF1.6: Editar Pedido;
-RF1.7: Remover Pedido
+RF = Requisito Funcional
 
-NF2.1: A conta pode ser gerada em arquivo PDF;
-RF2.2: Exibir Erro de Login;
-NF2.3: Restringir acesso às funcionalidades por tipo de usuário;
-NF2.4: Mostrar carregamento na interface;
-NF2.5: Restringir tempo de login do usuário no sistema;
-NF2.6: A nota fiscal eletrônica (NF-e) pode ser gerada em arquivo PDF;
+1.X: Requisito ESSENCIAL
+
+    RF1.4: Fechar Pedido(s);
+    RF1.5: Receber pagamento do Cliente;
+    RF1.6: Editar Pedido;
+    RF1.7: Remover Pedido
+
+NF = Requisito Não Funcional
+
+2.X: Requisito IMPORTANTE
+
+    NF2.1: A conta pode ser gerada em arquivo PDF;
+    RF2.2: Exibir Erro de Login;
+    NF2.3: Restringir acesso às funcionalidades por tipo de usuário;
+    NF2.4: Mostrar carregamento na interface;
+    NF2.5: Restringir tempo de login do usuário no sistema;
+    NF2.6: A nota fiscal eletrônica (NF-e) pode ser gerada em arquivo PDF;
+
+3.X: Requisito DESEJÁVEL
+
+    NF3.1: Confiabilidade em logar rápido e em qualquer navegador e sistema operacional;
+    NF3.2: Permitir o programa ser instalado em qualquer computador com baixa memória RAM e HD;
+    NF3.3: Desenvolver em nuvem permitindo escalabilidade;
+    NF3.4: Informar por mensagem na tela, alterações realizadas ou não;
+    NF3.5: Interface de fácil entendimento de acordo com princípios de usabilidade;
+    NF 3.6: Histórico de pedidos em PDF.
+    NF 3.7: Toda segunda-feira deverá ser emitido um relatório dos pedidos da semana
 
 
-NF3.1: Confiabilidade em logar rápido e em qualquer navegador e sistema operacional;
-NF3.2: Permitir o programa ser instalado em qualquer computador com baixa memória RAM e HD;
-NF3.3: Desenvolver em nuvem permitindo escalabilidade;
-NF3.4: Informar por mensagem na tela, alterações realizadas ou não;
-NF3.5: Interface de fácil entendimento de acordo com princípios de usabilidade;
-NF 3.6: Histórico de pedidos em PDF.
-NF 3.7: Toda segunda-feira deverá ser emitido um relatório dos pedidos da semana
-
-Análise de requisitos: Estado do requisito pode ser inacabado, incompleto,  ambíguo, contraditório, completo ou acabado. E se resolve os problemas
+Análise de requisitos: Estado do requisito pode ser inacabado, incompleto, ambíguo, contraditório, completo ou acabado. E se resolve os problemas.

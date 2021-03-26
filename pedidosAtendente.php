@@ -1,8 +1,16 @@
 <?php
-include_once 'includes/headerlogin.php';
-include_once 'includes/message.php';
 include_once 'php_action/db_connect.php';
 include_once 'includes/header.php';
+
+/*
+// Sessão
+session_start();
+// Verificação
+if (!isset($_SESSION['logado'])) {
+    header('Location: index.php');
+}
+*/
+
 ?>
 
 <div class="row">
@@ -12,20 +20,15 @@ include_once 'includes/header.php';
         <table class="striped">
             <thead>
                 <tr>
+                    <th>Cliente:
                     <th>
-                        Cliente:
+                    <th>Mesa:
                     <th>
+                    <th>Descrição:
                     <th>
-                        Mesa:
+                    <th>Atendente:
                     <th>
-                    <th>
-                        Descrição:
-                    <th>
-                    <th>
-                        Atendente:
-                    <th>
-                    <th>
-                        Estado:
+                    <th>Estado:
                     <th>
                 </tr>
             </thead>
@@ -41,20 +44,15 @@ include_once 'includes/header.php';
                     while ($dados = mysqli_fetch_array($resultado)) :
                 ?>
                         <tr>
+                            <td><?php echo $dados['cliente']; ?>
                             <td>
-                                <?php echo $dados['cliente']; ?>
+                            <td><?php echo $dados['mesa']; ?>
                             <td>
+                            <td><?php echo $dados['descricao_pedido']; ?>
                             <td>
-                                <?php echo $dados['mesa']; ?>
+                            <td><?php echo $dados['atendente']; ?>
                             <td>
-                            <td>
-                                <?php echo $dados['descricao_pedido']; ?>
-                            <td>
-                            <td>
-                                <?php echo $dados['atendente']; ?>
-                            <td>
-                            <td>
-                                <?php echo $dados['estado']; ?>
+                            <td><?php echo $dados['estado']; ?>
                             <td>
                         </tr>
                     <?php
@@ -81,11 +79,11 @@ include_once 'includes/header.php';
             </tbody>
         </table>
         <br>
-        <h6>Para adicionar pedido e mais - Efetue <strong>login</strong></h6>
+        <a href="adicionar.php" class="btn green">Adicionar pedido</a>
+        <a href="index.php" class="btn">Lista de Pedidos</a>
     </div>
 </div>
 
 <?php
 include_once 'includes/footer.php';
-include_once 'includes/footerlogin.php';
 ?>
