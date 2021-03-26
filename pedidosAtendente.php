@@ -79,8 +79,8 @@ if (!isset($_SESSION['logado'])) {
             </tbody>
         </table>
         <br>
-        <a href="adicionar.php" class="btn">Adicionar pedido</a>
-        <a href="index.php" class="btn gren">Lista de Pedidos</a>
+        <a href="adicionar.php" class="btn green">Adicionar pedido</a>
+        <a href="index.php" class="btn">Lista de Pedidos</a>
     </div>
 </div>
 
