@@ -4,7 +4,7 @@ include_once 'includes/header.php';
 session_start();
 function session_checker()
 {
-    if (!isset($_SESSION['login'])) {
+    if (!isset($_SESSION['logado'])) {
         header('Location: ../index.php');
         exit();
     }
@@ -35,8 +35,24 @@ session_checker();
             </div>
 
             <div class="input-field col s12">
+                <!--
                 <input type="text" name="descricao_pedido" id="descricao_pedido">
+                0
                 <label for="descricao_pedido">Descrição do pedido</label>
+                -->
+                <select name="descricao_pedido" id="descricao_pedido">
+                    <option value="Brownie">Brownie</option>
+                    <option value="Cookie">Cookie</option>
+                    <option value="Cafe">Café</option>
+                    <option value="Chocolate Quente">Chocolate Quente</option>
+                    <option value="Cappucciono">Cappucciono</option>
+                    <option value="Waffle">Waffle</option>
+                    <option value="Milk Shake">Milk Shake</option>
+                    <option value="Petit Gateau">Petit Gateau</option>
+                    <option value="Baked Alaska">Baked Alaska</option>
+                    <option value="Café na Casquinha">Café na Casquinha</option>
+                    <option value="Chá Gelado">Chá Gelado</option>
+                </select>
             </div>
 
             <div class="input-field col s12">
@@ -44,8 +60,8 @@ session_checker();
                 <label for="estado">Estado</label>
             </div>
 
-            <button type="submit" name="btn-cadastrar" class="btn">Cadastrar</button>
-            <a href="index.php" class="btn green">Lista de Pedidos</a>
+            <button type="submit" name="btn-cadastrar" class="btn green">Adicionar</button>
+            <a href="sair.php" class="btn red">SAIR - Lista de Pedidos</a>
 
         </form>
     </div>

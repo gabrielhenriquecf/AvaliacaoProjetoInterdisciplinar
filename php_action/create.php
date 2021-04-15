@@ -5,7 +5,7 @@ require_once 'db_connect.php';
 
 
 if (isset($_POST['btn-cadastrar'])) {
-    if (!$estado = filter_Input(INPUT_POST, 'estado', FILTER_VALIDATE_INT, array("options" => array("min_range" => 0, "max_range" => 9)))) {
+    if (!$estado = filter_Input(INPUT_POST, 'estado', FILTER_VALIDATE_INT, array("options" => array("min_range" => 1, "max_range" => 9)))) {
         $_SESSION['mensagem'] = "Erro, campo estado inválido.";
         header('Location: ../index.php');
     } else {
@@ -20,7 +20,9 @@ if (isset($_POST['btn-cadastrar'])) {
         if ($atendente == "1")
             $atendente = "Gabriel";
         if ($atendente == "2")
-            $atendente = "Bárbara";
+            $atendente = "Daniel";
+        if ($atendente == "3")
+            $atendente = "teste";
 
         $estado = mysqli_escape_string($connect, $_POST['estado']);
 
