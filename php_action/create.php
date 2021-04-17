@@ -32,9 +32,15 @@ if (isset($_POST['btn-cadastrar'])) {
 
         if (mysqli_query($connect, $sql)) {
             $_SESSION['mensagem'] = "Pedido cadastrado com sucesso";
+            session_start();
+            session_unset();
+            session_destroy();
             header('Location: ../index.php');
         } else {
             $_SESSION['mensagem'] = "Erro no cadastro";
+            session_start();
+            session_unset();
+            session_destroy();
             header('Location: ../index.php');
         }
     }

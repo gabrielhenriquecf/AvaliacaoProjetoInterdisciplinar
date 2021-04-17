@@ -1,16 +1,17 @@
 <?php
 include_once 'includes/header.php';
-/*
-session_start();
+include_once 'includes/headerlogin.php';
+
+
 function session_checker()
 {
-    if (!isset($_SESSION['logado'])) {
-        header('Location: ../index.php');
-        exit();
+    if (!isset($_SESSION['logadoAtendente'])) {
+        header('Location: ../sistemadelogin/index.php');
+        $_SESSION['mensagem'] = "Bem-vindo ao Sistema";
     }
 }
 session_checker();
-*/
+
 
 ?>
 
@@ -35,11 +36,6 @@ session_checker();
             </div>
 
             <div class="input-field col s12">
-                <!--
-                <input type="text" name="descricao_pedido" id="descricao_pedido">
-                0
-                <label for="descricao_pedido">Descrição do pedido</label>
-                -->
                 <select name="descricao_pedido" id="descricao_pedido">
                     <option value="Brownie">Brownie</option>
                     <option value="Cookie">Cookie</option>
@@ -61,7 +57,7 @@ session_checker();
             </div>
 
             <button type="submit" name="btn-cadastrar" class="btn green">Adicionar</button>
-            <a href="sair.php" class="btn red">SAIR - Lista de Pedidos</a>
+            <a href="php_action/sair.php" class="btn red">SAIR - Lista de Pedidos</a>
 
         </form>
     </div>

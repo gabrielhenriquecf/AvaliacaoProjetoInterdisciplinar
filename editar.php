@@ -1,19 +1,16 @@
 <?php
 include_once 'php_action/db_connect.php';
 include_once 'includes/header.php';
-include_once 'includes/message.php';
+include_once 'includes/headerlogin.php';
 
-/*
-session_start();
 function session_checker()
 {
-    if (!isset($_SESSION['login'])) {
-        header('Location: ../index.php');
-        exit();
+    if (!isset($_SESSION['logadoCaixa'])) {
+        header('Location: ../sistemadelogin/index.php');
+        $_SESSION['mensagem'] = "Bem-vindo ao Sistema";
     }
 }
 session_checker();
-*/
 
 
 //Select
@@ -57,9 +54,9 @@ if (isset($_GET['id'])) {
                 <label for="estado">Estado</label>
             </div>
 
-            <button type="submit" name="btn-editar" class="btn">Atualizar</button>
-            <a href="pedidosCaixa.php" class="btn orange">Voltar interface CAIXA</a>
-            <a href="index.php" class="btn green">Lista de Pedidos</a>
+            <button type="submit" name="btn-editar" class="btn green">Atualizar</button>
+            <a href="pedidosCaixa.php" class="btn">Voltar interface CAIXA</a>
+            <a href="php_action/sair.php" class="btn red">SAIR - Lista de Pedidos</a>
         </form>
     </div>
 </div>

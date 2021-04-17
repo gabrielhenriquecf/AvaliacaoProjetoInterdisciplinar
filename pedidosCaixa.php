@@ -1,8 +1,17 @@
 <?php
 include_once 'php_action/db_connect.php';
 include_once 'includes/header.php';
+include_once 'includes/headerlogin.php';
 
 
+function session_checker()
+{
+    if (!isset($_SESSION['logadoCaixa'])) {
+        header('Location: ../sistemadelogin/index.php');
+        $_SESSION['mensagem'] = "Bem-vindo ao Sistema";
+    }
+}
+session_checker();
 
 ?>
 
@@ -50,11 +59,10 @@ include_once 'includes/header.php';
                             <td><a href="editar.php?id=<?php echo $dados['id']; ?>" class="btn-floating orange"><i class="material-icons">edit</i></a>
                             <td>
 
-                            <td><a href="#modal<?php echo $dados['id']; ?>" class="btn-floating red modal-trigger"><i class="material-icons">delete</i></a>
+                            <td><a href="#modal_delete<?php echo $dados['id']; ?>" class="btn-floating red modal-trigger"><i class="material-icons">delete</i></a>
                             <td>
-
                                 <!-- Modal Structure -->
-                                <div id="modal<?php echo $dados['id']; ?>" class="modal">
+                                <div id="modal_delete<?php echo $dados['id']; ?>" class="modal">
                                     <div class="modal-content">
                                         <h4>Atenção!</h4>
                                         <p>Favor, confirmar se deseja excluir esse pedido.</p>
@@ -64,6 +72,26 @@ include_once 'includes/header.php';
                                         <form action="php_action/delete.php" method="POST">
                                             <input type="hidden" name="id" value="<?php echo $dados['id']; ?>">
                                             <button type="submit" name="btn-deletar" class="btn red">Sim, quero excluir.</button>
+
+                                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+                                        </form>
+                                    </div>
+                                </div>
+
+                            <td><a href="#modal_pagar<?php echo $dados['id']; ?>" class="btn-floating blue modal-trigger"><i class="material-icons">payment</i></a>
+                            <td>
+
+                                <!-- Modal Structure -->
+                                <div id="modal_pagar<?php echo $dados['id']; ?>" class="modal">
+                                    <div class="modal-content">
+                                        <h4>Atenção!</h4>
+                                        <p>Favor, confirmar se deseja excluir esse pedido.</p>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <form action="php_action/pagar.php" method="POST">
+                                            <input type="hidden" name="id" value="<?php echo $dados['id']; ?>">
+                                            <button type="submit" name="btn-deletar" class="btn blue">Sim, quero pagar.</button>
 
                                             <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
                                         </form>
@@ -94,8 +122,8 @@ include_once 'includes/header.php';
             </tbody>
         </table>
         <br>
-        <a href="adicionar.php" class="btn">Adicionar pedido</a>
-        <a href="index.php" class="btn green">SAIR - Lista de Pedidos</a>
+        <a href="adicionar.php" class="btn green">Adicionar pedido</a>
+        <a href="php_action/sair.php" class="btn red">SAIR - Lista de Pedidos</a>
     </div>
 </div>
 
