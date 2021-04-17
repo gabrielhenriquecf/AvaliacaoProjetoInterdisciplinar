@@ -12,6 +12,7 @@ if (isset($_POST['btn-entrar'])) {
   $login = mysqli_escape_string($connectUser, $_POST['login']);
   $senha = mysqli_escape_string($connectUser, $_POST['senha']);
 
+
   if (empty($login) or empty($senha)) {
     $erros[] = "<li> O campo login/senha precisa ser preenchido </li>";
   } else {
@@ -26,15 +27,18 @@ if (isset($_POST['btn-entrar'])) {
       if (mysqli_num_rows($resultado) == 1) {
         $dados = mysqli_fetch_array($resultado);
         $_SESSION['logadoAtendente'] = true;
+
         $_SESSION['id_usuario'] = $dados['id'];
 
         header('Location: pedidosAtendente.php');
       }
+      /*
       if (mysqli_num_rows($resultado) >= 1) {
-        $_SESSION['login'] = $_POST['login'];
-        $_SESSION['senha'] = $_POST['senha'];
-        echo "<li>Você foi autenticado com sucesso! Aguarde um instante. </li>";
-      } else {
+        //$_SESSION['login'] = $_POST['login'];
+        //$_SESSION['senha'] = $_POST['senha'];
+        //echo "<li>Você foi autenticado com sucesso! Aguarde um instante. </li>";
+      }
+      */ else {
         $erros[] = " <li> Usuário e senha não conferem </li> ";
       }
     } else {
@@ -50,6 +54,8 @@ if (isset($_POST['btn-entrar'])) {
         if (mysqli_num_rows($resultado) == 1) {
           $dados = mysqli_fetch_array($resultado);
           $_SESSION['logadoCaixa'] = true;
+          $_SESSION['login'] = $_POST['login'];
+          $_SESSION['senha'] = $_POST['senha'];
           $_SESSION['id_usuario'] = $dados['id'];
           header('Location: pedidosCaixa.php');
         } else {

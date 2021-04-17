@@ -85,13 +85,13 @@ session_checker();
                                 <div id="modal_pagar<?php echo $dados['id']; ?>" class="modal">
                                     <div class="modal-content">
                                         <h4>Atenção!</h4>
-                                        <p>Favor, confirmar se deseja excluir esse pedido.</p>
+                                        <p>Favor, confirmar se deseja PAGAR esse pedido.</p>
                                     </div>
 
                                     <div class="modal-footer">
                                         <form action="php_action/pagar.php" method="POST">
                                             <input type="hidden" name="id" value="<?php echo $dados['id']; ?>">
-                                            <button type="submit" name="btn-deletar" class="btn blue">Sim, quero pagar.</button>
+                                            <button type="submit" name="btn-pay" class="btn blue">Sim, quero pagar.</button>
 
                                             <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
                                         </form>
