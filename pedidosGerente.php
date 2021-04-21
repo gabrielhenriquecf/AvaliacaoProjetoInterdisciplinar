@@ -6,14 +6,13 @@ include_once 'includes/headerlogin.php';
 
 function session_checker()
 {
-    if (!isset($_SESSION['logadoCaixa'])) {
+    if (!isset($_SESSION['logadoGerente'])) {
         header('Location: ../sistemadelogin/index.php');
         $_SESSION['mensagem'] = "Bem-vindo ao Sistema";
     }
 }
 session_checker();
-//COLOCAR TEMPORIZADOR PARA DESLOGAR APÓS 30MIN
-// lmmitar os estados para saber que foi o caixa 
+
 ?>
 
 <div class="row">
@@ -57,6 +56,27 @@ session_checker();
                             <td>
                             <td><?php echo $dados['estado']; ?>
                             <td>
+                            <td><a href="editar.php?id=<?php echo $dados['id']; ?>" class="btn-floating orange"><i class="material-icons">edit</i></a>
+                            <td>
+
+                            <td><a href="#modal_delete<?php echo $dados['id']; ?>" class="btn-floating red modal-trigger"><i class="material-icons">delete</i></a>
+                            <td>
+                                <!-- Modal Structure -->
+                                <div id="modal_delete<?php echo $dados['id']; ?>" class="modal">
+                                    <div class="modal-content">
+                                        <h4>Atenção!</h4>
+                                        <p>Favor, confirmar se deseja excluir esse pedido.</p>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <form action="php_action/delete.php" method="POST">
+                                            <input type="hidden" name="id" value="<?php echo $dados['id']; ?>">
+                                            <button type="submit" name="btn-deletar" class="btn red">Sim, quero excluir.</button>
+
+                                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+                                        </form>
+                                    </div>
+                                </div>
 
                             <td><a href="#modal_pagar<?php echo $dados['id']; ?>" class="btn-floating blue modal-trigger"><i class="material-icons">payment</i></a>
                             <td>
@@ -102,7 +122,7 @@ session_checker();
             </tbody>
         </table>
         <br>
-        <a href="adicionarPedidos.php" class="btn green">Adicionar pedido</a>
+        <a href="adicionarPedidosGerente.php" class="btn green">Adicionar pedido</a>
         <a href="php_action/sair.php" class="btn red">SAIR - Lista de Pedidos</a>
     </div>
 </div>

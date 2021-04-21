@@ -6,12 +6,13 @@ include_once 'includes/headerlogin.php';
 
 function session_checker()
 {
-    if (!isset($_SESSION['logadoAtendente'])) {
+    if (!isset($_SESSION['logadoCaixa'])) {
         header('Location: ../sistemadelogin/index.php');
         $_SESSION['mensagem'] = "Bem-vindo ao Sistema";
     }
 }
 session_checker();
+//COLOCAR TEMPORIZADOR PARA DESLOGAR APÓS 10MIN
 
 
 ?>
@@ -20,7 +21,7 @@ session_checker();
     <div class="col s12 m6 push-m3">
         <h3 class="light"> Novo Pedido </h3>
 
-        <form action="php_action/create.php" method="POST">
+        <form action="php_action/create_pedidos.php" method="POST">
             <div class="input-field col s12">
                 <input type="text" name="cliente" id="cliente">
                 <label for="cliente">Cliente</label>
@@ -38,8 +39,7 @@ session_checker();
 
             <div class="input-field col s12">
                 <select name="descricao_pedido" id="descricao_pedido">
-                    <option value="NULL"></option>
-                    <option value="Ver Atendente">Ver Atendente</option>
+                    <option value="NULL">NADA</option>
                     <option value="Brownie">Brownie</option>
                     <option value="Cookie">Cookie</option>
                     <option value="Cafe">Café</option>
@@ -59,7 +59,7 @@ session_checker();
                 <label for="estado">Estado</label>
             </div>
 
-            <button type="submit" name="btn-cadastrar" class="btn green">Adicionar</button>
+            <button type="submit" name="btn-pedidos" class="btn green">Adicionar</button>
             <a href="php_action/sair.php" class="btn red">SAIR - Lista de Pedidos</a>
 
         </form>

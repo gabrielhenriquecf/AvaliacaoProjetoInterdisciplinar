@@ -24,21 +24,13 @@ if (isset($_POST['btn-entrar'])) {
       $sql = "SELECT * FROM usuarios WHERE login = '$login' AND senha = '$senha' ";
       $resultado = mysqli_query($connectUser, $sql);
 
+      //login ATENDENTE
       if (mysqli_num_rows($resultado) == 1) {
         $dados = mysqli_fetch_array($resultado);
         $_SESSION['logadoAtendente'] = true;
-
-        $_SESSION['id_usuario'] = $dados['id'];
-
+        $_SESSION['nome_atendente'] = $dados['nome'];
         header('Location: pedidosAtendente.php');
-      }
-      /*
-      if (mysqli_num_rows($resultado) >= 1) {
-        //$_SESSION['login'] = $_POST['login'];
-        //$_SESSION['senha'] = $_POST['senha'];
-        //echo "<li>Você foi autenticado com sucesso! Aguarde um instante. </li>";
-      }
-      */ else {
+      } else {
         $erros[] = " <li> Usuário e senha não conferem </li> ";
       }
     } else {
@@ -46,6 +38,7 @@ if (isset($_POST['btn-entrar'])) {
       $sql = "SELECT login FROM caixa WHERE login = '$login'";
       $resultado = mysqli_query($connectUser, $sql);
 
+      //login CAIXA
       if (mysqli_num_rows($resultado) > 0) {
         $senha = md5($senha);
         $sql = "SELECT * FROM caixa WHERE login = '$login' AND senha = '$senha' ";
@@ -54,15 +47,32 @@ if (isset($_POST['btn-entrar'])) {
         if (mysqli_num_rows($resultado) == 1) {
           $dados = mysqli_fetch_array($resultado);
           $_SESSION['logadoCaixa'] = true;
-          $_SESSION['login'] = $_POST['login'];
-          $_SESSION['senha'] = $_POST['senha'];
-          $_SESSION['id_usuario'] = $dados['id'];
+          $_SESSION['nome_caixa'] = $dados['nome'];
           header('Location: pedidosCaixa.php');
         } else {
           $erros[] = " <li> Usuário e senha não conferem </li> ";
         }
       } else {
-        $erros[] = "<li> Usuário não existe. </li>";
+
+        $sql = "SELECT login FROM gerente WHERE login = '$login'";
+        $resultado = mysqli_query($connectUser, $sql);
+
+        if (mysqli_num_rows($resultado) > 0) {
+          $senha = md5($senha);
+          $sql = "SELECT * FROM gerente WHERE login = '$login' AND senha = '$senha' ";
+          $resultado = mysqli_query($connectUser, $sql);
+
+          if (mysqli_num_rows($resultado) == 1) {
+            $dados = mysqli_fetch_array($resultado);
+            $_SESSION['logadoGerente'] = true;
+            $_SESSION['nome_gerente'] = $dados['nome'];
+            header('Location: pedidosGerente.php');
+          } else {
+            $erros[] = " <li> Usuário e senha não conferem </li> ";
+          }
+        } else {
+          $erros[] = "<li> Usuário não existe. </li>";
+        }
       }
     }
   }

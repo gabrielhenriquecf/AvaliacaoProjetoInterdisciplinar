@@ -5,7 +5,7 @@ include_once 'includes/headerlogin.php';
 
 function session_checker()
 {
-    if (!isset($_SESSION['logadoAtendente']) || !isset($_SESSION['logadoCaixa'])) {
+    if (!isset($_SESSION['logadoAtendente'])) {
         header('Location: ../sistemadelogin/index.php');
         $_SESSION['mensagem'] = "Bem-vindo ao Sistema";
     }

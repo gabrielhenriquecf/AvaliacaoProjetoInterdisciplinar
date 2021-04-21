@@ -5,7 +5,7 @@ include_once 'includes/headerlogin.php';
 
 function session_checker()
 {
-    if (!isset($_SESSION['logadoCaixa'])) {
+    if (!isset($_SESSION['logadoGerente'])) {
         header('Location: ../sistemadelogin/index.php');
         $_SESSION['mensagem'] = "Bem-vindo ao Sistema";
     }
@@ -55,7 +55,7 @@ if (isset($_GET['id'])) {
             </div>
 
             <button type="submit" name="btn-editar" class="btn green">Atualizar</button>
-            <a href="pedidosCaixa.php" class="btn">Voltar interface CAIXA</a>
+            <a href="pedidosGerente.php" class="btn">Voltar interface GERENTE</a>
             <a href="php_action/sair.php" class="btn red">SAIR - Lista de Pedidos</a>
         </form>
     </div>

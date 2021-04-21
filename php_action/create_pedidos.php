@@ -4,7 +4,7 @@ require_once 'db_connect.php';
 
 
 
-if (isset($_POST['btn-cadastrar'])) {
+if (isset($_POST['btn-pedidos'])) {
     if (!$estado = filter_Input(INPUT_POST, 'estado', FILTER_VALIDATE_INT, array("options" => array("min_range" => 1, "max_range" => 9)))) {
         $_SESSION['mensagem'] = "Erro, campo estado inválido.";
         header('Location: ../index.php');
@@ -23,17 +23,7 @@ if (isset($_POST['btn-cadastrar'])) {
             $atendente = "Daniel";
         if ($atendente == "3")
             $atendente = "teste";
-        /*
-                    //PUXAR NOME DO ATENDENTE
-        //echo session_encode();
-        // session_decode($atendente);
-        //$atendente = $_SESSION['nome_atendente'];
-        //$atendente = session_encode();
-        //$dados['nome'];
-        $atendente = implode(':', $dados);
 
-        print "$atendente";
-*/
         $estado = mysqli_escape_string($connect, $_POST['estado']);
 
         //inserção no banco de dados
@@ -42,16 +32,10 @@ if (isset($_POST['btn-cadastrar'])) {
 
         if (mysqli_query($connect, $sql)) {
             $_SESSION['mensagem'] = "Pedido cadastrado com sucesso";
-            session_start();
-            session_unset();
-            session_destroy();
-            header('Location: ../index.php');
+            header('Location: ../pedidosCaixa.php');
         } else {
             $_SESSION['mensagem'] = "Erro no cadastro";
-            session_start();
-            session_unset();
-            session_destroy();
-            header('Location: ../index.php');
+            header('Location: ../pedidosCaixa.php');
         }
     }
 }
