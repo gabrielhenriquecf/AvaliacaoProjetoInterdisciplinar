@@ -10,16 +10,17 @@ if (isset($_POST['btn-pay'])) {
     $sql1 = "INSERT INTO pedidossalvos (cliente, mesa, descricao_pedido, atendente) SELECT cliente, mesa, descricao_pedido, atendente FROM pedidos WHERE id = '$id'  ";
 
     $sql2 = "DELETE FROM pedidos WHERE id = '$id' ";
+
     if (mysqli_query($connect, $sql1)) {
         if (mysqli_query($connect, $sql2)) {
             $_SESSION['mensagem'] = "Pedido pago com sucesso";
-            header('Location: ../pedidosGerente.php');
+            header('Location: ../pedidosCaixa.php');
         } else {
             $_SESSION['mensagem'] = "Erro ao pagar pedido";
-            header('Location: ../pedidosGerente.php');
+            header('Location: ../pedidosCaixa.php');
         }
     } else {
         $_SESSION['mensagem'] = "Erro ao pagar pedido";
-        header('Location: ../pedidosGerente.php');
+        header('Location: ../pedidosCaixa.php');
     }
 }
